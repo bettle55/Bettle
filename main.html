@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bioteknologi: Technology for New Era — OTN Web Design</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========================================
+       VARIABEL WARNA GLOBAL
+       ======================================== */
+    :root {
+      --warna-gelap: #22577A;
+      --warna-redup: #38A3A5;
+      --warna-aksen: #57CC99;
+      --warna--kata:#80ED99;
+    }
+
+    /* ========================================
+       STYLE DASAR HTML & BODY
+       ======================================== */
+    html, body {
+      height: 100%;
+      font-family: Inter, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      background: #0f1724;
+      color: var(--warna-aksen);
+    }
+
+    /* ========================================
+       NAVIGASI
+       ======================================== */
+    .navigasi-bergulir {
+      background: linear-gradient(90deg, rgba(11, 18, 32, 0.95), rgba(6, 12, 20, 0.95));
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+    }
+
+    .merek {
+      font-weight: 800;
+      color: var(--warna-aksen);
+    }
+
+    /* ========================================
+       HERO SECTION & PARALLAX
+       ======================================== */
+    .bagian-hero {
+      position: relative;
+      height: 92vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+    }
+
+    .lapisan-parallax {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      will-change: transform;
+    }
+
+    /* Layer latar belakang parallax */
+    .parallax-latar-belakang {
+      background-image: url('image.png');
+      filter: grayscale(0.06) contrast(0.9) brightness(0.55);
+    }
+
+    /* Layer tengah parallax */
+    .parallax-tengah {
+
+      opacity: 0.35;
+    }
+
+    .konten-hero {
+      position: relative;
+      z-index: 5;
+      padding: 3rem;
+    }
+
+    .bagian-hero h1 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.02;
+      margin-bottom: 0.6rem;
+    }
+
+    .bagian-hero p.teks-utama {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: var(--warna-redup);
+    }
+
+    /* ========================================
+       SECTION UMUM
+       ======================================== */
+    section {
+      padding: 6rem 0;
+    }
+
+    /* Efek kaca untuk kotak informasi */
+    .efek-kaca {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+      border-left: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    /* ========================================
+       KARTU NEGARA
+       ======================================== */
+    .kartu-negara {
+      backdrop-filter: blur(6px);
+      transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.28s;
+    }
+
+    .kartu-negara:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 14px 40px rgba(2, 6, 23, 0.6);
+    }
+
+    /* ========================================
+       PROGRESS BAR SCROLL
+       ======================================== */
+    #batang-progres {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--warna-aksen), #7af7d6);
+      width: 0;
+      z-index: 9999;
+    }
+
+    /* ========================================
+       UTILITAS KECIL
+       ======================================== */
+    .teks-redup {
+      color: var(--warna-redup);
+    }
+
+    footer {
+      padding: 2rem 0;
+      color: var(--warna-redup);
+      text-align: center;
+    }
+
+    /* ========================================
+       RESPONSIVE - MOBILE
+       ======================================== */
+    @media (max-width: 768px) {
+      .bagian-hero {
+        min-height: 520px;
+        padding-top: 56px;
+      }
+
+      .bagian-hero p.teks-utama {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Progress Bar Scroll -->
+  <div id="batang-progres"></div>
+
+  <!-- ========================================
+       NAVIGASI UTAMA
+       ======================================== -->
+  <nav id="navigasi-utama" class="navbar navbar-expand-lg navbar-dark fixed-top px-3">
+    <div class="container-fluid">
+      <a class="navbar-brand merek" href="#">Biotech Horizon</a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-navigasi">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="menu-navigasi">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#tentang">Penjelasa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#mengapa">Alasan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#negara">Negara</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#kontak">Kontak</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================
+       HERO SECTION DENGAN PARALLAX
+       ======================================== -->
+  <header class="bagian-hero" id="beranda">
+    <!-- Layer parallax latar belakang -->
+    <div class="lapisan-parallax parallax-latar-belakang" data-kecepatan="0.2"></div>
+    <div class="lapisan-parallax parallax-tengah" data-kecepatan="0.5"></div>
+    
+    <div class="container konten-hero text-white">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1>
+            BioTeknologi:
+            <span style="color: var(--warna-aksen)">Technology for New Era</span>
+          </h1>
+          
+          <p class="teks-utama">
+            Sebuah tampilan interaktif yang menjelaskan apa itu bioteknologi, 
+            mengapa ia penting, dan contoh terapan unggulan dari tiga negara: 
+            Jepang (iPS), Swiss (terapi biologis), dan AS (CRISPR).
+          </p>
+          
+          <div class="mt-4">
+            <a href="#mengapa" class="btn btn-lg btn-outline-light me-2">
+              Pelajari Mengapa
+            </a>
+            <a href="#negara" class="btn btn-lg btn-primary">
+              Lihat Negara Utama
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-lg-5 d-none d-lg-block text-end">
+          <div class="efek-kaca p-4 shadow-sm">
+            <h5>Ringkasan Cepat</h5>
+            <p class="teks-redup">
+              Bioteknologi menggabungkan biologi & teknologi untuk solusi kesehatan, 
+              pangan, energi, dan lingkungan. Pada web ini tiap negara menampilkan 
+              satu teknologi unggulan dan implikasinya pada era baru.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mt-5">
+    <!-- ========================================
+         SECTION: APA ITU BIOTEKNOLOGI
+         ======================================== -->
+    <section id="tentang">
+      <div class="row g-5 align-items-center">
+        <div class="col-md-6">
+          <h2>Apa itu Bioteknologi?</h2>
+          
+          <p class="teks-redup">
+            Bioteknologi adalah penggunaan organisme hidup, sel, atau komponennya 
+            untuk membuat produk atau proses yang bermanfaat. Ini meliputi rekayasa 
+            genetika, kultur sel, biomaterial, dan terapi yang memanfaatkan sistem 
+            biologis untuk mengatasi tantangan modern.
+          </p>
+          
+          <ul>
+            <li>Rekayasa Genetika & Editing (mis. CRISPR)</li>
+            <li>Kultur Sel & Terapi Sel (mis. iPS)</li>
+            <li>Bioproses untuk produksi, pangan, dan energi</li>
+          </ul>
+        </div>
+        
+        <div class="col-md-6">
+          <!-- Video embed biotechnology explainer -->
+          <div class="ratio ratio-16x9 shadow-sm rounded overflow-hidden">
+            <iframe 
+              src="https://youtu.be/5pPR9ns0FZg?si=P7fbzWw5f6a6opom" 
+              title="Biotechnology explainer" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: MENGAPA BIOTEKNOLOGI
+         ======================================== -->
+    <section id="mengapa">
+      <div class="row">
+        <div class="col-lg-8">
+          <h2>Mengapa Memilih Bioteknologi?</h2>
+          
+          <p class="teks-redup">
+            Tema kompetisi "Technology for New Era" menuntut solusi yang mengubah kehidupan. 
+            Bioteknologi merupakan jembatan antara sains dasar dan aplikasi riil—dari obat 
+            yang menyelamatkan nyawa hingga solusi pangan berkelanjutan.
+          </p>
+          
+          <!-- Grid keunggulan bioteknologi -->
+          <div class="row mt-4">
+            <div class="col-sm-6 mb-3">
+              <div class="p-3 efek-kaca">
+                <h5>Impact Kesehatan</h5>
+                <p class="teks-redup">
+                  Terapi sel & gen membuka jalan untuk mengobati penyakit 
+                  yang sebelumnya tidak bisa diatasi.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-sm-6 mb-3">
+              <div class="p-3 efek-kaca">
+                <h5>Keberlanjutan</h5>
+                <p class="teks-redup">
+                  Bioproduksi dan fermentasi modern dapat menggantikan proses 
+                  industri yang merusak lingkungan.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-sm-6 mb-3">
+              <div class="p-3 efek-kaca">
+                <h5>Inovasi Cepat</h5>
+                <p class="teks-redup">
+                  Platform genetik dan bioinformatika mempercepat penemuan 
+                  obat dan desain biologis.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-sm-6 mb-3">
+              <div class="p-3 efek-kaca">
+                <h5>Interdisipliner</h5>
+                <p class="teks-redup">
+                  Menggabungkan biologi, komputasi, teknik, dan desain UX 
+                  untuk solusi yang manusiawi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="p-4 efek-kaca text-center">
+            <h3 style="color: var(--warna-aksen)">Statistik Cepat</h3>
+            <p class="teks-redup">
+              Contoh: <strong>iPS</strong> &amp; <strong>CRISPR</strong> memicu 
+              lonjakan riset terapi gen 2010–2025.
+            </p>
+            <button id="tombol-statistik" class="btn btn-outline-light btn-sm">
+              Tampilkan lebih
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: 3 NEGARA & TEKNOLOGI
+         ======================================== -->
+    <section id="negara">
+      <h2>3 Negara & Teknologi Unggulan</h2>
+      
+      <p class="teks-redup">
+        Pilihan negara ini merepresentasikan pendekatan berbeda: penelitian sel & 
+        regenerasi (Jepang), terapi biologis klinis (Swiss), dan editing gen 
+        presisi skala luas (AS).
+      </p>
+
+      <div class="row mt-4 g-4">
+        <!-- Kartu Jepang -->
+        <div class="col-md-4">
+          <div class="kartu-negara p-4 efek-kaca h-100">
+            <h4>Jepang — iPS Cells</h4>
+            
+            <p class="teks-redup">
+              Jepang memimpin dalam induced pluripotent stem cells (iPS) — sel 
+              dewasa yang diprogram ulang menjadi sel pluripotent. Ini memungkinkan 
+              penelitian regeneratif dan terapi personal.
+            </p>
+            
+            <ul>
+              <li>Keunggulan: etika lebih sederhana dibanding embrionik</li>
+              <li>Aplikasi: regenerasi jaringan, uji obat</li>
+            </ul>
+            
+            <button 
+              class="btn btn-sm btn-primary mt-2" 
+              data-bs-toggle="modal" 
+              data-bs-target="#modal-jepang">
+              Detail
+            </button>
+          </div>
+        </div>
+
+        <!-- Kartu Swiss -->
+        <div class="col-md-4">
+          <div class="kartu-negara p-4 efek-kaca h-100">
+            <h4>Swiss — Terapi Biologis</h4>
+            
+            <p class="teks-redup">
+              Swiss dikenal sebagai pusat farmasi dan biotek terkemuka; fokus pada 
+              terapi biologis seperti antibodi monoklonal, vaksin modern, dan obat 
+              berbasis protein.
+            </p>
+            
+            <ul>
+              <li>Keunggulan: ekosistem riset & manufaktur klinis</li>
+              <li>Aplikasi: kanker, autoimun, penyakit langka</li>
+            </ul>
+            
+            <button class="btn btn-sm btn-primary mt-2" id="tombol-swiss">
+              Detail
+            </button>
+          </div>
+        </div>
+
+        <!-- Kartu Amerika Serikat -->
+        <div class="col-md-4">
+          <div class="kartu-negara p-4 efek-kaca h-100">
+            <h4>Amerika Serikat — CRISPR-Cas9</h4>
+            
+            <p class="teks-redup">
+              AS adalah pusat inovasi gene-editing, termasuk pengembangan dan 
+              aplikasi CRISPR-Cas9 untuk penelitian, terapi gen, dan biotek 
+              startup yang mengkomersialkan platform editing.
+            </p>
+            
+            <ul>
+              <li>Keunggulan: investasi & startup cepat</li>
+              <li>Aplikasi: terapi gen, tanaman tahan penyakit</li>
+            </ul>
+            
+            <button class="btn btn-sm btn-primary mt-2" id="tombol-amerika">
+              Detail
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION: KONTAK & KOLABORASI
+         ======================================== -->
+    <section id="kontak">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Kontak & Kolaborasi</h3>
+          
+          <p class="teks-redup">
+            Jika Anda ingin mengembangkan proyek atau butuh desain web interaktif 
+            untuk tema biotek—hubungi tim kami.
+          </p>
+          
+          <!-- Form kontak -->
+          <form id="form-kontak" class="row g-2">
+            <div class="col-12">
+              <input class="form-control" placeholder="Nama" required>
+            </div>
+            
+            <div class="col-12">
+              <input class="form-control" placeholder="Email" type="email" required>
+            </div>
+            
+            <div class="col-12">
+              <textarea class="form-control" placeholder="Pesan" rows="3" required></textarea>
+            </div>
+            
+            <div class="col-12">
+              <button class="btn btn-primary">Kirim</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center">
+          <div class="w-100 text-center">
+            <h4>Demo Interaksi</h4>
+            
+            <p class="teks-redup">
+              Klik tiap tombol "Detail" pada kartu negara untuk membuka modal 
+              dengan penjelasan mendalam & sumber (contoh UI/UX interaktif).
+            </p>
+            
+            <div class="mt-3">
+              <button class="btn btn-outline-light" id="tombol-simulasi">
+                Simulasikan Animasi Halus
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer>
+    <div class="container">
+      <small>
+        OTN — Web Design | Tema: Technology for New Era • 
+        Dibuat untuk kompetisi oleh <strong>Tim BiotechEra</strong>
+      </small>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       MODAL JEPANG
+       ======================================== -->
+  <div class="modal fade" id="modal-jepang" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Jepang — iPS Cells (Penjelasan)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        
+        <div class="modal-body">
+          <p>
+            Jepang menjadi tempat lahir teknologi sel punca pluripoten terinduksi (induced pluripotent stem cells atau iPS cells) yang ditemukan oleh Shinya Yamanaka pada tahun 2006. Teknologi ini memungkinkan sel dewasa yang sudah terdiferensiasi untuk “diprogram ulang” menjadi sel yang bisa berkembang menjadi berbagai jenis sel dalam tubuh, hampir seperti sel punca embrionik. 
+            Temuan ini menjadi terobosan besar dalam bidang terapi regeneratif dan penelitian medis karena membuka peluang untuk mengganti atau memperbaiki jaringan dan organ yang rusak tanpa menggunakan embrio, sehingga menghindari kontroversi etis yang selama ini melekat pada penggunaan sel punca embrionik.
+            Jepang terus aktif mengembangkan dan mengaplikasikan teknologi iPS ini, terutama melalui Center for iPS Cell Research and Application (CiRA) di Kyoto University yang dipimpin langsung oleh Yamanaka. Saat ini, Jepang melakukan berbagai riset dan uji klinis untuk memanfaatkan iPS cells dalam pengobatan penyakit degeneratif, seperti penyakit jantung, diabetes, dan berbagai cedera saraf. Selain itu, Jepang juga berfokus pada produksi iPS cells dengan standar klinis yang ketat sehingga siap digunakan untuk terapi manusia secara aman dan efektif. Perkembangan ini menjadikan Jepang sebagai pusat dunia dalam riset dan aplikasi klinis iPS cells yang berpotensi merevolusi pengobatan medis di masa depan.
+          </p>
+          
+          <p class="teks-redup">
+            Impak etis & regulasi menjadi poin penting — Jepang menggabungkan 
+            regulasi ketat dan kemajuan klinis untuk memastikan keselamatan pasien.
+          </p>
+        </div>
+        
+        <div class="modal-footer border-0">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       MODAL SWISS (Konten Dinamis)
+       ======================================== -->
+  <div class="modal fade" id="modal-swiss" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Swiss — Terapi Biologis (Penjelasan)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        
+        <div class="modal-body" id="konten-modal-swiss">
+        </div>
+        
+        <div class="modal-footer border-0">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       MODAL AMERIKA SERIKAT
+       ======================================== -->
+  <div class="modal fade" id="modal-amerika" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Amerika Serikat — CRISPR-Cas9 (Penjelasan)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        
+        <div class="modal-body">
+          <p>
+            Amerika Serikat menjadi pusat pengembangan teknologi CRISPR-Cas9 berkat kontribusi besar dari tim Jennifer Doudna di University of California, Berkeley, yang bersama Emmanuelle Charpentier berhasil mengembangkan metode revolusioner ini. 
+            CRISPR-Cas9 adalah teknologi penyuntingan gen yang memungkinkan pemotongan dan pengubahan DNA secara sangat presisi, secara efektif bertindak sebagai “gunting molekuler” yang dapat menarget gen tertentu dengan akurasi tinggi. 
+            Keunggulan teknologi ini terletak pada kemudahan dan kecepatannya dibanding metode sebelumnya, sehingga dapat diaplikasikan dalam waktu singkat di berbagai bidang.
+            Teknologi CRISPR-Cas9 telah digunakan secara luas dalam bidang terapi gen untuk penyakit genetik seperti cystic fibrosis dan anemia sel sabit, rekayasa tanaman tahan hama, dan riset medis lanjutan. 
+            Di Amerika Serikat, pengembangan CRISPR terus berlanjut dengan riset terkini yang mencoba mengatasi berbagai penyakit kronis melalui penyuntingan gen secara langsung pada sel tubuh manusia, bahkan pada hewan model untuk terapi penyakit hati dan kolesterol tinggi. Pendekatan ini memberikan harapan baru untuk pengobatan yang lebih efektif dan personal di masa depan.
+          </p>
+          
+          <p class="teks-redup">
+            Startup, universitas, dan institusi klinis di AS aktif mengembangkan 
+            terapi gen yang memanfaatkan CRISPR untuk kanker, kelainan darah, 
+            dan penyakit langka.
+          </p>
+        </div>
+        
+        <div class="modal-footer border-0">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       JAVASCRIPT LIBRARIES
+       ======================================== -->
+  <!-- Bootstrap Bundle (termasuk Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- GSAP untuk animasi -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- ========================================
+       CUSTOM JAVASCRIPT
+       ======================================== -->
+  <script>
+    // ========================================
+    // SMOOTH SCROLL untuk link internal
+    // ========================================
+    document.querySelectorAll('a[href^="#"]').forEach(function(linkElement) {
+      linkElement.addEventListener('click', function(event) {
+        const hrefTujuan = linkElement.getAttribute('href');
+        
+        // Hanya proses jika href lebih dari satu karakter (bukan hanya "#")
+        if (hrefTujuan.length > 1) {
+          event.preventDefault();
+          
+          const targetElement = document.querySelector(hrefTujuan);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // ========================================
+    // EFEK NAVBAR SAAT SCROLL
+    // ========================================
+    const navigasiUtama = document.getElementById('navigasi-utama');
+    const batangProgres = document.getElementById('batang-progres');
+    
+    window.addEventListener('scroll', function() {
+      // Tambah class 'navigasi-bergulir' saat scroll lebih dari 40px
+      if (window.scrollY > 40) {
+        navigasiUtama.classList.add('navigasi-bergulir');
+      } else {
+        navigasiUtama.classList.remove('navigasi-bergulir');
+      }
+      
+      // Update progress bar berdasarkan posisi scroll
+      const elemenHTML = document.documentElement;
+      const posisiScroll = elemenHTML.scrollTop || document.body.scrollTop;
+      const tinggiTotal = elemenHTML.scrollHeight - elemenHTML.clientHeight;
+      const persentase = posisiScroll / tinggiTotal;
+      
+      // Set width progress bar (0-100%)
+      batangProgres.style.width = Math.min(100, Math.max(0, persentase * 100)) + '%';
+    });
+
+    // ========================================
+    // EFEK PARALLAX pada layer background
+    // ========================================
+    const lapisanParallax = document.querySelectorAll('.lapisan-parallax');
+    
+    window.addEventListener('scroll', function() {
+      const posisiScrollAtas = window.scrollY;
+      
+      lapisanParallax.forEach(function(lapisan) {
+        const kecepatan = parseFloat(lapisan.dataset.kecepatan) || 0.3;
+        
+        // Transform berdasarkan kecepatan yang ditentukan
+        lapisan.style.transform = 'translateY(' + (posisiScrollAtas * kecepatan) + 'px)';
+      });
+    });
+
+    // ========================================
+    // ANIMASI GSAP untuk Hero Section
+    // ========================================
+    // Animasi judul hero
+    gsap.from('.konten-hero h1', {
+      y: 40,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animasi paragraf utama hero
+    gsap.from('.konten-hero p.teks-utama', {
+      y: 20,
+      opacity: 0,
+      delay: 0.2,
+      duration: 1
+    });
+
+    // ========================================
+    // MODAL SWISS - Konten Dinamis
+    // ========================================
+    document.getElementById('tombol-swiss').addEventListener('click', function() {
+      const kontenModal = document.getElementById('konten-modal-swiss');
+      
+      // Isi konten modal secara dinamis
+      kontenModal.innerHTML = `
+        <p>
+          Swiss dikenal sebagai pusat inovasi terapi biologis, didukung oleh perusahaan farmasi besar seperti Roche dan Novartis yang berperan penting dalam pengembangan pengobatan modern. Roche, yang berdiri sejak 1896, merupakan pemimpin global dalam riset dan pengembangan terapi biologis, terutama di bidang onkologi dan penyakit autoimun. Produk seperti Avastin dan Herceptin menjadi terobosan besar dalam pengobatan kanker payudara dan kanker kolon, karena menawarkan efektivitas lebih tinggi serta efek samping yang lebih terkontrol dibanding metode konvensional. 
+          Novartis, perusahaan multinasional Swiss lainnya, juga mendorong kemajuan dalam terapi biologis dengan fokus pada penyakit kronis seperti hipertensi, diabetes, dan kanker. Mereka berinvestasi besar dalam terapi gen, terapi sel, serta pengembangan imunoterapi yang lebih presisi dan efektif. 
+          Selain itu, Novartis terlibat dalam pengembangan teknologi penghantaran obat mutakhir untuk meningkatkan keamanan dan hasil terapi pasien. Kombinasi riset intensif, dukungan teknologi, serta kolaborasi global dari kedua perusahaan ini menjadikan Swiss sebagai pusat utama inovasi terapi biologis yang berkontribusi besar terhadap kesehatan global.
+        </p>
+        <p class='teks-redup'>
+          Fokus pada kualitas manufaktur klinis, compliance, dan pipeline untuk 
+          penyakit kronis membuat Swiss menjadi contoh bagaimana riset dapat 
+          dipercepat menjadi produk klinis.
+        </p>
+      `;
+      
+      // Tampilkan modal
+      const modalSwiss = new bootstrap.Modal(document.getElementById('modal-swiss'));
+      modalSwiss.show();
+    });
+
+    // ========================================
+    // TOMBOL SIMULASI ANIMASI
+    // ========================================
+    document.getElementById('tombol-simulasi').addEventListener('click', function() {
+      // Animasi ulang untuk semua kartu negara
+      gsap.fromTo('.kartu-negara', 
+        {
+          y: 20,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power2.out'
+        }
+      );
+    });
+
+    // ========================================
+    // FORM KONTAK - Submit Handler
+    // ========================================
+    document.getElementById('form-kontak').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const tombolSubmit = event.target.querySelector('button');
+      tombolSubmit.disabled = true;
+      tombolSubmit.innerText = 'Mengirim...';
+      
+      // Simulasi pengiriman (tanpa backend)
+      setTimeout(function() {
+        tombolSubmit.innerText = 'Terkirim!';
+        tombolSubmit.classList.remove('btn-primary');
+        tombolSubmit.classList.add('btn-success');
+      }, 900);
+    });
+
+    // ========================================
+    // AKSESIBILITAS - Keyboard Support
+    // ========================================
+    // Tambahkan support keyboard Enter untuk tombol di kartu negara
+    document.querySelectorAll('.kartu-negara button').forEach(function(tombol) {
+      tombol.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          tombol.click();
+        }
+      });
+    });
+
+    // ========================================
+    // ANIMASI AWAL untuk Kartu Negara
+    // ========================================
+    gsap.from('.kartu-negara', {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.12,
+      ease: 'power3.out'
+    });
+
+    // ========================================
+    // TOMBOL STATISTIK (placeholder)
+    // ========================================
+    document.getElementById('tombol-statistik').addEventListener('click', function() {
+      alert('Fitur statistik akan segera hadir!');
+    });
+
+    // ========================================
+    // MODAL AMERIKA - Buka dengan tombol
+    // ========================================
+    document.getElementById('tombol-amerika').addEventListener('click', function() {
+      const modalAmerika = new bootstrap.Modal(document.getElementById('modal-amerika'));
+      modalAmerika.show();
+    });
+  </script>
+</body>
+</html>
